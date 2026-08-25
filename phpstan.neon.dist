@@ -1,0 +1,8 @@
+parameters:
+  level: 6
+  paths:
+    - includes/
+    - tests/
+    - shurloc-environment.php
+  scanFiles:
+    - vendor/php-stubs/wordpress-tests-stubs/wordpress-tests-stubs.php

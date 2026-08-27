@@ -234,6 +234,29 @@ function shurloc_is_staging_email_recipient_header(
 }
 
 /**
+ * Hide the WPForms license activation limit notice on staging.
+ *
+ * WPForms may display an admin notice when the staging site is not included
+ * as a separate license activation. This notice is expected on staging and
+ * should not be displayed to administrators.
+ *
+ * @return void
+ */
+function shurloc_hide_wpforms_license_notice_on_staging(): void {
+	if ( ! shurloc_is_staging_environment() ) {
+		return;
+	}
+
+	?>
+	<style>
+		#wpforms-notice-license-activation-reached {
+			display: none !important;
+		}
+	</style>
+	<?php
+}
+
+/**
  * Register Google Site Kit staging safeguard hooks.
  *
  * @return void
@@ -280,6 +303,18 @@ function shurloc_register_staging_email_hooks(): void {
 }
 
 /**
+ * Register WPForms staging safeguard hooks.
+ *
+ * @return void
+ */
+function shurloc_register_wpforms_hooks(): void {
+	add_action(
+		'admin_head',
+		'shurloc_hide_wpforms_license_notice_on_staging'
+	);
+}
+
+/**
  * Register all Shur-loc Environment hooks.
  *
  * @return void
@@ -287,4 +322,5 @@ function shurloc_register_staging_email_hooks(): void {
 function shurloc_register_environment_hooks(): void {
 	shurloc_register_site_kit_hooks();
 	shurloc_register_staging_email_hooks();
+	shurloc_register_wpforms_hooks();
 }

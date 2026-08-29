@@ -3,7 +3,7 @@
  * Plugin Name:       Shur-loc Environment
  * Plugin URI:        https://github.com/shurloc/shurloc-environment
  * Description:       Must-use plugin for configuring the Shur-loc website environments.
- * Version:           0.2.0
+ * Version:           0.2.1
  * Requires at least: 7.0
  * Requires PHP:      8.4
  * Author:            Shur-loc
